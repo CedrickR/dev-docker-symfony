@@ -130,6 +130,80 @@ $ docker rm $(docker ps -aq)
 $ docker rmi $(docker images -q)
 ```
 
+## Commandes Git
+
+```bash
+# initialiser un dépôt git
+$ git init
+
+# suivre et valider des fichiers
+$ git add <fichier>
+$ git commit -m "commentaire"
+La commande add permet d'indexer un fichier, c'est à dire de le suivre et fera parti de la prochaine validation
+
+# clôner un dépôt distant
+$ git clone <url du dépôt>
+
+# voir les changements en cours 
+$ git status
+
+# voir les différences entre les fichiers modifiés mais pas encore indexés
+$ git diff
+$ git diff --cached
+
+# effacer un fichier en suivi de version
+$ git rm <fichier>
+
+# ajouter une nouvelle branche
+$ git checkout -b <nouvelle branche>
+
+# changer de branche
+$ git checkout <branche>
+
+# fusionner la nouvelle branche dans master
+$ git checkout master
+$ git merge correctif
+
+# outil graphique pour voir les changements
+$ git mergetool
+
+# effacer la brache correctif
+$ git branch -d correctif
+
+# Afficher les dépôts distant
+$ git remote -v
+
+# Ajouter un dépôt distant
+$ git remote add <mot-clé> <url du dépôt>
+
+# Récupérer et tirer depuis les dépôts distant
+$ git fetch <nom distant ou mot-clé>
+
+# Pousser son travail sur un dépôt distant
+$ git push <nom distant ou mot-clé> <nom de branche>
+
+# Inspecter un dépôt distant
+$ git remote show <nom distant ou mot-clé>
+
+# Renommer ou changer l'adresse d'une dépôt
+$ git remote set-url <nouvelle adresse>
+
+# Visualiser l'historique des validations
+$ git log
+
+# Lister les étiquettes
+$ git tag
+
+# Créer une étiquette annotée
+$ git tag -a v1.4 -m "Commentaire sur la version"
+
+# Partager les étiquettes
+$ git push <mot-clé> --tags
+
+# Annuler le dernier commit
+$ git commit --amend
+
+```
 ## FAQ
 
 * Got this error: `ERROR: Couldn't connect to Docker daemon at http+docker://localunixsocket - is it running?
