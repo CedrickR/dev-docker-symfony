@@ -35,3 +35,4 @@ services:
             - 8080:80
         links:
             - db:db
+
