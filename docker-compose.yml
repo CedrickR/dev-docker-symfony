@@ -4,7 +4,7 @@ services:
     db:
         image: mysql
         volumes:
-            - ${DOCKER_DATA_PATH}/data/db:/var/lib/mysql
+            - ${DOCKER_DATA_PATH}/mysql:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -17,7 +17,7 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony
-            - ${DOCKER_LOG_PATH}/logs/symfony:/var/www/symfony/app/logs
+            - ${DOCKER_LOG_PATH}/symfony:/var/www/symfony/app/logs
     nginx:
         build: nginx
         ports:
@@ -25,12 +25,12 @@ services:
         volumes_from:
             - php
         volumes:
-            - ${DOCKER_LOG_PATH}/logs/nginx/:/var/log/nginx
+            - ${DOCKER_LOG_PATH}/nginx/:/var/log/nginx
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
         container_name: phpmyadmin
         environment:
-        - PMA_ARBITRARY=1
+            - PMA_ARBITRARY=1
         restart: always
         ports:
-        - 8080:8080
+            - 8080:80
