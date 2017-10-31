@@ -5,7 +5,7 @@
 ## Envoyer des emails
 
 1. Dans le fichier app/config/parameters.yml
-    ```bash
+    ```docker
 parameters:
     ...
     mailer_transport: mail
@@ -17,7 +17,7 @@ parameters:
 
     ```
 2. Dans le fichier app/config/config_dev.yml
-    ```bash
+    ```docker
 swiftmailer:
     delivery_addresses: ['me@symfony.dev']
     ```
