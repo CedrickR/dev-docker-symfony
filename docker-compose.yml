@@ -17,6 +17,8 @@ services:
                 TIMEZONE: ${TIMEZONE}
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony
+        links:
+            - mailhog
     nginx:
         build: nginx
         ports:
@@ -27,11 +29,14 @@ services:
             - ${DOCKER_LOG_PATH}/nginx/:/var/log/nginx
     phpmyadmin:
         image: phpmyadmin/phpmyadmin
-        container_name: phpmyadmin
         environment:
             - PMA_ARBITRARY=1
-        restart: always
         ports:
             - 8080:80
         links:
-            - db:db
+            - db:mysql
+    mailhog:
+        image: mailhog/mailhog:v1.0.0
+        ports:
+            - "1025:1025"
+            - "8025:8025"
