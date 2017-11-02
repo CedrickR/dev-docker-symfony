@@ -22,7 +22,7 @@ services:
     nginx:
         build: nginx
         ports:
-            - 80:80
+            - ${PORT_SYMFONY}:80
         volumes_from:
             - php
         volumes:
@@ -32,11 +32,11 @@ services:
         environment:
             - PMA_ARBITRARY=1
         ports:
-            - 8080:80
+            - ${PORT_PHPMYADMIN}:80
         links:
             - db:mysql
     mailhog:
         image: mailhog/mailhog:v1.0.0
         ports:
-            - "1025:1025"
-            - "8025:8025"
+            - ${PORT_MAILHOG}:1025
+            - ${PORT_MAILHOG_WEB}:8025
