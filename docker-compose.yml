@@ -40,3 +40,4 @@ services:
         ports:
             - ${PORT_MAILHOG}:1025
             - ${PORT_MAILHOG_WEB}:8025
+
